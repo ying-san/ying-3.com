@@ -1,0 +1,18 @@
+{% extends "base_.html" %}
+{% block title %} Upload | 影三{% endblock %}
+
+{% block body %}
+<div>
+    <input type="file"
+           id="id-upload-journal"
+           class="hide"/>
+    <label for="id-upload-journal"
+           class="css-lib-center-block css-lib-block">
+        <span>upload_new_journal</span>
+    </label>
+</div>
+{% endblock %}
+
+{% block script_end %}
+<script id="id-js-journal-upload" src="/static/js?file=journal_upload.js"></script>
+{% endblock %}

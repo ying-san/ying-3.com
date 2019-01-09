@@ -1,0 +1,113 @@
+{% extends "base_.html" %}
+{% block title %} 影三 | 注册 {% endblock %}
+<meta name="csrf-token" content="{{ csrf_token() }}"/>
+{% block body %}
+    <section class="inner main">
+
+        <div class="container login-page">
+            <div class="row">
+                <div class="col-md-4 col-lg-offset-4">
+                    {% for category, message in get_flashed_messages(with_categories=true) %}
+                        <div class="alert alert-{{ category }} alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <h3 class="text-center">注册</h3>
+                    <form class="form-horizontal" role="form" method="post" action="{{ url_for('auth.register') }}">
+                        {{ form.csrf_token }}
+                        <div class="form-group">
+                            {{ form.introduce_user_code.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon "></span></span>
+                                    {{ form.introduce_user_code(class='form-control', placeholder='您的推荐人用户代码', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.qq.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon "></span></span>
+                                    {{ form.qq(class='form-control', placeholder='您联系我时用的QQ', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.phone.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon "></span></span>
+                                    {{ form.phone(class='form-control', placeholder='手机号,如果需要一折试用就需要填写,不需要则可以不填', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.wechat.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon "></span></span>
+                                    {{ form.wechat(class='form-control', placeholder='您打算用哪个微信号码和我联系', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon "></span></span>
+                                    {{ form.email(class='form-control', placeholder='您通过哪个电子邮件接收数据', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span type="password"></span></span>
+                                    {{ form.password(class='form-control', placeholder='请输入您的密码', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.password_repeat.label(class='col-sm-3 control-label') }}
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span type="password"></span></span>
+                                    {{ form.password_repeat(class='form-control', placeholder='再输入您的密码', required='') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-default">注册</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-size:12px;">身份代码是为了保护客户的隐私而设计的一套机制，提供给有需要的客户，用于退款和提现</p>
+        <p style="font-size:12px;">正式购买影三的任意服务后可以从影三处得到，</p>
+        <p style="font-size:12px;">在影三这里，每个用户都有自己的身份代码</p>
+        <p style="font-size:12px;">这个代码在全球范围内是唯一的不可重复的 UUID</p>
+        <p style="font-size:12px;">您可以把它看做是在影三这里的身份证号码</p>
+        <p style="font-size:12px;">因为影三的服务牵涉到个人隐私，很多客户都有顾虑，设计的这套机制也是我服务的一部分</p>
+        <p style="font-size:12px;">业务退款或返利的时候我根据这个代号判断应该联系谁，以及往谁的账户打钱</p>
+        <p style="font-size:12px;">有了这个机制，您的姓名，年龄等真实信息就都不必以任何形式被第三人知晓</p>
+        <p style="font-size:12px;">您甚至可以选择在注册的时候使用没有经过实名认证的联系方式（如果您不信任我的私密性的话）</p>
+        <p style="font-size:12px;">是否信任我是您可以自己选择的</p>
+        <p style="font-size:12px;">您的任何联系方式，影三只做记录，不做验证或认证，所以也不提供密码重置功能</p>
+        <p style="font-size:12px;">所以请您确保在业务期间可以通过您留的联系方式联系到您，因为发数据和资料的时候会用到（尤其是邮箱）</p>
+        <p style="font-size:12px;">并且未来您留的联系方式会是向我证明您确实是客户本人的唯一依据</p>
+        <p style="font-size:12px;">提现的时候也需要用您注册时候的联系方式来联系我，否则我不知道是否是您本人</p>
+        <p style="font-size:12px;">所以，您的注册信息请您务必自己记录并保存（建议是一张纸或存到一个固定的U盘上）</p>
+
+        <p>影三，敬上</p>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/jquery-2.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+{% endblock %}

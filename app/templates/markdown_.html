@@ -1,0 +1,20 @@
+{% extends "base_.html" %}
+{% block title %} 影三 | 站在你阴影里的朋友 {% endblock %}
+{% block script_head %}
+    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="css-lib-center-block css-lib-block">
+        <h1 id="id-title" class="text-center">
+            {{ title }}
+        </h1>
+        <div id="id-content" class="markdown-body">
+            {{ content }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script_end %}
+    <script src="{{ url_for('static', filename='js/render-markdown.js') }}"></script>
+{% endblock %}

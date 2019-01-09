@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"
+      class=" js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase no-indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface video audio localstorage sessionstorage webworkers /applicationcache svg inlinesvg smil svgclippaths">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="">
+
+    <title>{% block title%}{% endblock %}</title>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <meta name="description" content="{% block desc %}{% endblock %}">
+    <meta name="author" content="影三">
+    <meta name="viewport" content="width=device-width">
+    {% block script_head %}{% endblock %}
+
+</head>
+<body id="index">
+
+<header class="top banner cf">
+    <div class="inner">
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            <div class="alert alert-{{ category }} alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="left">
+            <a href="{{ url_for('main.index') }}" title="home" class="button logo">影三</a>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li class="nav-item">
+                    <a title="service" class="button white nav-link"
+                       href="{{ url_for('main.service') }}">服务</a>
+                </li>
+                <li class="nav-item">
+                    <a title="用户" class="button white nav-link"
+                       href="{{ url_for('auth.user') }}">用户</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+{% block body %}
+{% endblock %}
+
+<footer>
+    <div class="inner">
+        <nav class="footer-nav">
+            <ul>
+                <li class="nav-item">
+                    <a title="service" class="button white journal nav-link"
+                       href="{{ url_for('main.service') }}">服务列表</a>
+                </li>
+                <li class="nav-item">
+                    <a title="About" class="button white about nav-link"
+                       href="{{ url_for('main.about') }}">关于影三</a>
+                </li>
+                <li class="nav-item">
+                    <a title="rebate" class="button white about nav-link"
+                       href="{{ url_for('main.rebate') }}">客户返利</a>
+                </li>
+                <li class="nav-item">
+                    <a title="group" class="button white about nav-link"
+                       href="{{ url_for('main.group') }}">高级VIP圈子</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+
+</div>
+
+<div class="praetorians">
+    <input type="file"  id="id-praetorian" class="hide"/>
+    <label for="id-praetorian"><span>π</span></label>
+</div>
+</body>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/syntax.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}"
+      media="only screen and (max-device-width: 600px)">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/github-markdown.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/css-lib.css') }}">
+<script src="{{ url_for('static', filename='js/modernizr-1.7.min.js.download.js') }}"></script>
+<script src="{{ url_for('static', filename='js/js-lib.js') }}"></script>
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% block script_end %}
+{% endblock %}
+</html>

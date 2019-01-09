@@ -1,0 +1,27 @@
+.css-lib-center {
+    text-align: center;
+}
+
+.css-lib-center-block {
+    margin: 0 auto;
+}
+
+.css-lib-block {
+    display: block;
+    width: 700px;
+}
+.markdown-body {
+		box-sizing: border-box;
+		min-width: 200px;
+		max-width: 980px;
+}
+
+@media (max-width: 767px) {
+	.markdown-body {
+		padding: 15px;
+	}
+}
+
+.hide {
+		display: none;
+}

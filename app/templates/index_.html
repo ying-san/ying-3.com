@@ -1,0 +1,31 @@
+{% extends "base_.html" %}
+{% block title %} 影三 | 站在你阴影里的朋友 {% endblock %}
+
+{% block body %}
+    <section class="inner main">
+
+        <header>
+            <h1>影三</h1>
+            <nav class="journal breadcrumb">
+                <a href="{{ url_for('main.index') }}">影三</a>
+                » 主页
+            </nav>
+        </header>
+
+        <p>
+            <embed src="{{ url_for('static', filename='images/come-on.svg') }}"
+                   width="600"
+                   height="400"
+                   type="image/svg+xml"
+                   pluginspage="http://www.adobe.com/svg/viewer/install/">
+            </embed>
+        </p>
+
+        <p>影三为高端客户提供最专业，安全，私密的一对一私人信息服务</p>
+        <p>帮助客户以最优的方式解决婚姻、商务的信任问题，或寻找失联的朋友</p>
+        <p>帮助客户取得证据或辨别真伪，提供客户作出决策需要的依据</p>
+        <p>如果你还没有登陆，请先<a href="{{ url_for('auth.login') }}">登陆</a></p>
+        <p>如果您没有账号也非引荐而来，请先联系QQ:8357-51617，再决定是否<a href="{{ url_for('auth.register') }}">注册</a></p>
+        <div align="right">--你的影子朋友</div>
+    </section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base_.html" %}
+{% block title %}Journal | 影三{% endblock %}
+
+{% block script%}
+    <script src='static/js?file=journals.js'></script>
+{% endblock %}
+
+{% block body %}
+    <section class="inner main">
+        <header>
+            <h1>Journal</h1>
+            <nav class="journal breadcrumb">
+                <a href="http://{{config.homepage}}/">Home</a>
+                »
+                Journal
+            </nav>
+        </header>
+
+        <ul class="journal listing clear">
+            {% for e in journals %}
+            <li>
+                <article>
+                    <time class="posted-time" datetime="{{e.updated_time}}">
+                        {{e.updated_time}}
+                    </time>
+                    &nbsp; - &nbsp;
+                    <a href="http://{{config.homepage}}/journal?id={{e.id}}">{{e.title}}</a>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
