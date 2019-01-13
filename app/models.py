@@ -46,22 +46,28 @@ class User(UserMixin, BaseModel):
     role = db.Column(db.Integer)
 
     @classmethod
-    def create(cls, email, qq, phone, wechat, introduce_user_code, password, permisson=UserPermission.NORMAL,enable=True):
+    def create(cls, email,
+               qq,
+               phone,
+               wechat,
+               introduce_user_code,
+               password,
+               permisson=UserPermission.NORMAL,
+               enable=True):
         has = User.query.filter_by(email=email).first()
 
         if has:
             return None
 
-        u = User(email=email,
-                 qq=qq,
-                 phone=phone,
-                 wechat=wechat,
-                 introduce_user_code=introduce_user_code,
-                 password=password,
-                 enable=enable,
-                 permisson=permisson)
-
-        u.enable = True
+        u = User()
+        u.email = email,
+        u.qq = qq,
+        u.phone = phone,
+        u.wechat = wechat,
+        u.introduce_user_code = introduce_user_code,
+        u.password = password,
+        u.enable = enable,
+        u.permisson = permisson
         db.session.add(u)
         db.session.commit()
 
