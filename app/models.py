@@ -46,7 +46,7 @@ class User(UserMixin, BaseModel):
     role = db.Column(db.Integer)
 
     @classmethod
-    def create(cls, email, qq, phone, wechat, introduce_user_code, password, permisson,enable=True):
+    def create(cls, email, qq, phone, wechat, introduce_user_code, password, permisson=UserPermission.NORMAL,enable=True):
         has = User.query.filter_by(email=email).first()
 
         if has:
